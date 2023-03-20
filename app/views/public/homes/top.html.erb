@@ -1,11 +1,21 @@
-       <!--ジャンルの検索画面が表示される-->
-  <%= image_tag("トップ画像.jpg", class: "top_image")
-      <div>ようこそ、Nagano cakeへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。
-      </div>
 
-      <!--ここに新商品が４件程度させる-->
-      <h1><span>新着商品</span></h1>
+    <div class="row login-row">
+     <div class="col-xs-3">
+           
+        <!--%= render 'genre_serch_form', genres: @genres %-->
+     </div>
+        <div class="col-xs-9">
+        <div>
+          <!--%= image_tag("トップ画像.png", class: "top_image") %-->
+          <div class="main-visual">
+           <p class="main-visual-text">
+             ようこそ、NaganoCakeへ！<br>
+             このサイトは、ケーキ販売のECサイトになります。<br>
+             会員でない方も商品の閲覧はできますが、<br>
+             購入には会員登録が必要になります。
+           </p>
+          </div>
+       </div>
+      </div>
     </div>
+
