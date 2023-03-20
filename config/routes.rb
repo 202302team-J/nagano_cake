@@ -8,8 +8,7 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    resources :genres, only: [:index, :edit, :create, :update]
   end
   namespace :admin do
     get 'items/index'
