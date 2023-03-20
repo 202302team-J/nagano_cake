@@ -11,7 +11,10 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
   end
   namespace :admin do
-    resources :items, only: [:index, :edit, :show, :new]
+    get 'items/index'
+    get 'items/new'
+    get 'items/show'
+    get 'items/edit'
   end
   namespace :admin do
     get 'homes/top'
