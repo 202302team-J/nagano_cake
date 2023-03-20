@@ -11,12 +11,11 @@ Rails.application.routes.draw do
     get 'genres/index'
     get 'genres/edit'
   end
+
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items, only: [:new, :create, :index, :show, :edit]
   end
+
   namespace :admin do
     get 'homes/top'
   end
