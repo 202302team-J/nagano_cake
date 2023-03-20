@@ -20,10 +20,22 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'homes/top'
   end
+
+ namespace :public do
+   get 'customers/show'
+   get 'customers/infomation/edit'
+   get 'customers/unsubscribe'
+ end
+
   namespace :public do
     get 'destinations/index'
     get 'destinations/edit'
   end
+  namespace :public do
+    get 'items/index'
+    get 'items/show'
+  end
+
   namespace :public do
     get 'orders/new'
     get 'orders/index'
@@ -35,7 +47,8 @@ Rails.application.routes.draw do
     get 'cart_items/index'
   end
   namespace :public do
-    get 'items/homes'
+    get 'homes/about'
+    get 'homes/top'
   end
   namespace :public do
     get 'items/public/homes'
@@ -43,7 +56,7 @@ Rails.application.routes.draw do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-  
+
 devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
