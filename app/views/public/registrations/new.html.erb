@@ -1,29 +1,90 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<div class="container ml-5">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <h2 class="mt-5">新規会員登録</h2>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= form_with model: @customer, url: customer_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="row mt-3">
+      <p class="col-md-2">名前</p>
+      <div class="col-md-1 text-right">
+        <%= f.label :family_name, "(姓)" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :family_name, autofocus: true, required: true, autocomplete: "family_name" %>
+      </div>
+      <div class="col-md-1 text-right">
+        <%= f.label :personal_name, "(名)" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :personal_name, required: true, autocomplete: "personal_name" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="row mt-3">
+      <p class="col-md-2">フリガナ</p>
+      <div class="col-md-1 text-right">
+        <%= f.label :family_name_ruby, "(セイ)" %>
+      </div>
+      <div class="col-md-3">
+        <%= f.text_field :family_name_ruby, required: true, autocomplete: "family_name_ruby" %>
+      </div>
+      <div class="col-md-1 text-right">
+        <%= f.label :personal_name_ruby, "(メイ)" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.text_field :personal_name_ruby, required: true, autocomplete: "personal_name_ruby" %>
+      </div>
+    </div>
 
-<%= render "public/shared/links" %>
+    <div class="row mt-3">
+      <p class="col-md-3">メールアドレス</p>
+      <div class="field col-md-9">
+        <%= f.email_field :email, required: true, autocomplete: "email" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <p class="col-md-3">郵便番号(ハイフンなし)</p>
+      <div class="field col-md-9">
+        <%= f.text_field :postcode, required: true, autocomplete: "postcode" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <p class="col-md-3">住所</p>
+      <div class="field col-md-9">
+        <%= f.text_field :address, :size=>"72", required: true, autocomplete: "address" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <p class="col-md-3">電話番号(ハイフンなし)</p>
+      <div class="field col-md-9">
+        <%= f.text_field :telephone_number, required: true, autocomplete: "telephone_number" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <p class="col-md-3">パスワード(6文字以上)</p>
+      <div class="field col-md-9">
+        <%= f.password_field :password, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <p class="col-md-3">パスワード(確認用)</p>
+      <div class="field col-md-9">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      </div>
+    </div>
+
+    <div class="actions row mt-3">
+      <div class="col-md-3"></div>
+      <div class="field col-md-9">
+        <%= f.submit "新規登録", class: "text-light btn-success" %>
+      </div>
+    </div>
+  
+  <% end %>
