@@ -3,7 +3,7 @@ class Public::DestinationsController < ApplicationController
 
   def index
       @destination = Destination.new
-      @destinations = estinations.all
+      @destinations = destinations.all
   end
 
   def edit
@@ -15,10 +15,10 @@ class Public::DestinationsController < ApplicationController
       destination.customer_id = current_customer_id
    if destination.save
       flash[:notice] = '配送先を登録しました'
-      redirect_to  public_destination_index_path
+      redirect_to public_destinations_path
    else
       flash.now[:alert] = '必要な情報を入力してください'
-      redirect_to  public_destination_index_path
+      redirect_to public_destinations_path
    end
   end
 
@@ -26,18 +26,18 @@ class Public::DestinationsController < ApplicationController
       @destination = Destination.find(params[:id])
    if @destination.update(destination_params)
       flash[:notice] = '変更内容を保存しました'
-      redirect_to  public_destination_index_path
+      redirect_to public_destinations_path
    else
       @destination = Destination.find(params[:id])
       flash.now[:alert] = '必要な情報を入力してください'
-      render :public_destination_edit_path
+      render :edit_public_destination
    end
   end
 
   def destroy
       destination = Destination.find(params[:id])
       destination.delete
-      redirect_to  public_destination_index_path
+      redirect_to  public_destinations_path
   end
 
   private

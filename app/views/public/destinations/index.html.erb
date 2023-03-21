@@ -5,17 +5,17 @@
       <label class="postcord-label">郵便番号(ハイフンなし)</label>
       <%= f.text_field "postcode" %>
      </div>
-     
+
      <div class= "field">
       <label class="address">住所</label>
       <%= f.text_field "address" %>
      </div>
-     
+
      <div class= "field">
       <label class="name">宛名</label>
       <%= f.text_field "name" %>
      </div>
-     
+
       <%= f.submit "新規登録", class: "btn btn-success submit" %>
 
      <% end %>
@@ -34,8 +34,8 @@
           <td><%= destinations.postcord %></td>
           <td><%= destinations.address %></td>
           <td><%= destinations.name %></td>
-          <td><%= link_to "編集する", public_destination_edit_path(destination.id),class: "btn btn-primary"%></td>
-          <td><%= link_to "削除する", public_destination_index_path(destination.id),  class: "btn btn-danger", method: :delete %></td>
+          <td><%= link_to "編集する", edit_public_destination_path(destination.id),class: "btn btn-primary"%></td>
+          <td><%= link_to "削除する", public_destinations_path(destination.id),  class: "btn btn-danger", method: :delete %></td>
       </tr>
         <% end %>
     </tbody>
