@@ -12,13 +12,13 @@
         <%= f.label :family_name, "(姓)" %>
       </div>
       <div class="col-md-3">
-        <%= f.text_field :family_name, autofocus: true, required: true, autocomplete: "family_name" %>
+        <%= f.text_field :family_name, :placeholder => "長野", autofocus: true, required: true, autocomplete: "family_name" %>
       </div>
       <div class="col-md-1 text-right">
         <%= f.label :personal_name, "(名)" %>
       </div>
       <div class="col-md-4">
-        <%= f.text_field :personal_name, required: true, autocomplete: "personal_name" %>
+        <%= f.text_field :personal_name, :placeholder => "慶喜", required: true, autocomplete: "personal_name" %>
       </div>
     </div>
 
@@ -28,41 +28,41 @@
         <%= f.label :family_name_ruby, "(セイ)" %>
       </div>
       <div class="col-md-3">
-        <%= f.text_field :family_name_ruby, required: true, autocomplete: "family_name_ruby" %>
+        <%= f.text_field :family_name_ruby, :placeholder => "ナガノ", required: true, autocomplete: "family_name_ruby" %>
       </div>
       <div class="col-md-1 text-right">
         <%= f.label :personal_name_ruby, "(メイ)" %>
       </div>
       <div class="col-md-4">
-        <%= f.text_field :personal_name_ruby, required: true, autocomplete: "personal_name_ruby" %>
+        <%= f.text_field :personal_name_ruby, :placeholder => "ケイキ", required: true, autocomplete: "personal_name_ruby" %>
       </div>
     </div>
 
     <div class="row mt-3">
       <p class="col-md-3">メールアドレス</p>
       <div class="field col-md-9">
-        <%= f.email_field :email, required: true, autocomplete: "email" %>
+        <%= f.email_field :email, :placeholder => "keitora@sample.com", required: true, autocomplete: "email" %>
       </div>
     </div>
 
     <div class="row mt-3">
       <p class="col-md-3">郵便番号(ハイフンなし)</p>
       <div class="field col-md-9">
-        <%= f.text_field :postcode, required: true, autocomplete: "postcode" %>
+        <%= f.text_field :postcode, :placeholder => "0000000", required: true, autocomplete: "postcode" %>
       </div>
     </div>
 
     <div class="row mt-3">
       <p class="col-md-3">住所</p>
       <div class="field col-md-9">
-        <%= f.text_field :address, :size=>"72", required: true, autocomplete: "address" %>
+        <%= f.text_field :address, :size=>"72", :placeholder => "長野県長野市〇〇区〇丁目〇〇", required: true, autocomplete: "address" %>
       </div>
     </div>
 
     <div class="row mt-3">
       <p class="col-md-3">電話番号(ハイフンなし)</p>
       <div class="field col-md-9">
-        <%= f.text_field :telephone_number, required: true, autocomplete: "telephone_number" %>
+        <%= f.text_field :telephone_number, :placeholder => "00000000000", required: true, autocomplete: "telephone_number" %>
       </div>
     </div>
 
@@ -82,8 +82,8 @@
 
     <div class="actions row mt-3">
       <div class="col-md-3"></div>
-      <div class="field col-md-9">
-        <%= f.submit "新規登録", class: "text-light btn-success" %>
+      <div class="field col-md-9 pb-lg-5">
+        <%= f.submit "新規登録", class: "text-dark btn-outline-success btn-lg" %>
       </div>
     </div>
   
