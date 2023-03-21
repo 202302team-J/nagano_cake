@@ -1,23 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-  end
-  namespace :admin do
+    resources :orders, only: [:show]
+    resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
-  end
-
-  namespace :admin do
     resources :items, only: [:new, :create, :index, :show, :edit]
-  end
-
-  namespace :admin do
-    get 'homes/top'
-
+    root 'homes#top'
   end
 
  namespace :public do
