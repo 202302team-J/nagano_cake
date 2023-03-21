@@ -8,15 +8,13 @@ Rails.application.routes.draw do
     get 'customers/edit'
   end
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    resources :genres, only: [:index, :edit, :create, :update]
   end
+
   namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/show'
-    get 'items/edit'
+    resources :items, only: [:new, :create, :index, :show, :edit]
   end
+
   namespace :admin do
     get 'homes/top'
   end
@@ -51,6 +49,11 @@ Rails.application.routes.draw do
   end
   namespace :public do
     get 'items/public/homes'
+  end
+  namespace :public do
+    get 'customers/show'
+    get 'customers/infomation/edit'
+    get 'customers/unsubscribe'
   end
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
