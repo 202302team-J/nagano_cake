@@ -53,6 +53,11 @@ Rails.application.routes.draw do
   namespace :public do
     get 'items/public/homes'
   end
+  namespace :public do
+    get 'customers/show'
+    get 'customers/infomation/edit'
+    get 'customers/unsubscribe'
+  end
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
