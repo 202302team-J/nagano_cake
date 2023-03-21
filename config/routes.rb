@@ -37,11 +37,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
+    post "orders/payment_method" => "orders#payment_method"
     get 'orders/confirm'
     get 'orders/thanks'
+    resources :orders, only: [:new, :show, :create, :index]
   end
   namespace :public do
     get 'cart_items/index'
