@@ -14,8 +14,16 @@
         <% @orders.each do |order| %>
         <tbody>
           <tr><%= order.created_at %></tr>
-          <tr></tr>
-          <tr><%= order_details.item_count %></tr>
+          <tr>
+            <%= order.customer.full_name %>
+          </tr>
+          <tr>
+            <% sum=0 %>
+            <% order.order_details.each do |order_detail| %>
+            <% sum+=order_detail.item_count %>
+            <% end %>
+            <%= sum %>
+          </tr>
           <tr><%= order.status %></tr>
         </tbody>
         <% end %>
