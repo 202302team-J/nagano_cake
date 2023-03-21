@@ -1,2 +1,21 @@
-<h1>Public::Destinations#edit</h1>
-<p>Find me in app/views/public/destinations/edit.html.erb</p>
+
+<h2>配送先編集</h2>
+    <%= form_with model: @destination do |f| %>
+     <div class= "field">
+      <label class="postcord-label">郵便番号(ハイフンなし)</label>
+      <%= f.text_field "postcode" %>
+     </div>
+
+     <div class= "field">
+      <label class="address">住所</label>
+      <%= f.text_field "address" %>
+     </div>
+
+     <div class= "field">
+      <label class="name">宛名</label>
+      <%= f.text_field "name" %>
+     </div>
+
+      <%= f.submit "編集内容を登録", class: "btn btn-success submit" %>
+
+     <% end %>

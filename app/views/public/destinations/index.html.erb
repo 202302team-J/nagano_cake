@@ -1,16 +1,42 @@
 <h1>配送先登録/一覧</h1>
 
-<%= form_with model: @destination,url: public_destinations_index_path do |f| %>
+    <%= form_with model: @destination do |f| %>
+     <div class= "field">
+      <label class="postcord-label">郵便番号(ハイフンなし)</label>
+      <%= f.text_field "postcode" %>
+     </div>
+     
+     <div class= "field">
+      <label class="address">住所</label>
+      <%= f.text_field "address" %>
+     </div>
+     
+     <div class= "field">
+      <label class="name">宛名</label>
+      <%= f.text_field "name" %>
+     </div>
+     
+      <%= f.submit "新規登録", class: "btn btn-success submit" %>
 
-<%= f.lable "郵便番号（ハイフンなし）" %>
-<%= f.text_field "postcode" %>
+     <% end %>
 
-<%= f.lable "住所" %>
-<%= f.text_field "address" %>
-
-<%= f.lable "宛名" %>
-<%= f.text_field "name" %>
-
-<%= f.submit "新規登録" %>
-
-<% end %>
+  <table clacc="destinations-table">
+    <thead>
+      <tr>
+        <th>郵便番号</th>
+        <th>住所</th>
+        <th>宛名</th>
+      </tr>
+    </head>
+    <tbody>
+         <% @destinations.each do |destinations|  %>
+      <tr>
+          <td><%= destinations.postcord %></td>
+          <td><%= destinations.address %></td>
+          <td><%= destinations.name %></td>
+          <td><%= link_to "編集する", public_destination_edit_path(destination.id),class: "btn btn-primary"%></td>
+          <td><%= link_to "削除する", public_destination_index_path(destination.id),  class: "btn btn-danger", method: :delete %></td>
+      </tr>
+        <% end %>
+    </tbody>
+  </table>
