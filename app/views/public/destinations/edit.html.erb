@@ -1,19 +1,20 @@
 
 <h2>配送先編集</h2>
-    <%= form_with model: @destination do |f| %>
-     <div class= "field">
-      <label class="postcord-label">郵便番号(ハイフンなし)</label>
-      <%= f.text_field "postcode" %>
+    <%= form_with model: @destination, url: public_destinations_path do |f| %>
+
+     <div class= "form-group">
+      <label>郵便番号(ハイフンなし)</label>
+      <%= f.text_field :postcode %>
      </div>
 
-     <div class= "field">
-      <label class="address">住所</label>
-      <%= f.text_field "address" %>
+     <div class= "form-group">
+      <label>住所</label>
+      <%= f.text_field :address %>
      </div>
 
-     <div class= "field">
-      <label class="name">宛名</label>
-      <%= f.text_field "name" %>
+     <div class= "form-group">
+      <label>宛名</label>
+      <%= f.text_field :name %>
      </div>
 
       <%= f.submit "編集内容を登録", class: "btn btn-success submit" %>
