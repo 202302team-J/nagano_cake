@@ -24,7 +24,7 @@ class Public::DestinationsController < ApplicationController
   def update
       @destination = Destination.find(params[:id])
    if @destination.update(destination_params)
-      redirect_to public_destinations_path
+      redirect_to public_destination_path
    else
       @destination = Destination.find(params[:id])
       flash.now[:alert] = '必要な情報を入力してください'
@@ -35,7 +35,7 @@ class Public::DestinationsController < ApplicationController
   def destroy
       destination = Destination.find(params[:id])
       destination.delete
-      redirect_to  public_destinations_path
+      redirect_to  public_destination_path
   end
 
   private
