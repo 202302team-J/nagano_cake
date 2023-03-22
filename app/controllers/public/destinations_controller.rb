@@ -39,7 +39,7 @@ class Public::DestinationsController < ApplicationController
   private
 
   def destination_params
-    params.require(:destination).permit(:postcord, :address, :name, :customer_id)
+    params.require(:destination).permit(:postcode, :address, :name, :customer_id)
   end
 
 end
