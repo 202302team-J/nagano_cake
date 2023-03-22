@@ -1,19 +1,25 @@
-<div class='container'>
-  <div class='row'>
-    <div>
-      <h2>管理者ログイン</h2>
-      <%= form_with model: @admin, url: admin_session_path do |f| %>
-        <div class="field text-center">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
-  </div>
+  <div class="container">
+    <div class="row mt-5 ml-5">
+      <h2 class="bg-light">管理者ログイン</h2>
+    </div>
 
-  <div class="field">
+    <div class="col">
+      <%= form_with model: @admin, url: admin_session_path do |f| %>
+          <div class="form-group row mt-4">
+            <label class="col-sm-2 col-form-label offset-sm-2"><%= f.label :メールアドレス %></label>
+            <div class="col-sm-5">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
+            </div>
+          </div>
+
+
+
+  <div class="field text-center">
     <%= f.label :パスワード%>
     <%= f.password_field :password, autocomplete: "current-password", class: "password" %>
   </div>
 
-  <div class="actions">
+  <div class="actions text-center"">
     <%= f.submit "ログイン", class: 'btn btn-sm btn-primary' %>
   </div>
 <% end %>
