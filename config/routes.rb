@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     post "orders/payment_method" => "orders#payment_method"
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
     resources :orders, only: [:new, :show, :create, :index]
   end
