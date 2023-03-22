@@ -17,11 +17,12 @@ class Public::OrdersController < ApplicationController
 
   def confirm
       @order = Order.new(order_params)
+      @cart_items = current_customer.cart_items.all
 
    if params[:order][:address_option] == "0" # [:address_option]=="0"を呼び出す
-      @order.shi_postcode = current_customer.postcode
+      @order.ship_postcode = current_customer.postcode
       @order.ship_address = current_customer.address
-      @order.ship_name = current_customer.last_name + current_customer.first_name
+      @order.ship_name = current_customer.family_name + current_customer.personal_name
 
    elsif params[:order][:address_option] == "1" # [:address_option]=="1"を呼び出す
       ship = Address.find(params[:order][:customer_id])
@@ -34,9 +35,15 @@ class Public::OrdersController < ApplicationController
       @order.ship_postcode = params[:order][:ship_postcode]
       @order.ship_address = params[:order][:ship_address]
       @order.ship_name = params[:order][:ship_name]
+
    else
       render 'new'
    end
+  end
+
+  def create
+      @order = Order.new(order_params)
+      @order.save
   end
 
   def thanks
@@ -47,5 +54,6 @@ class Public::OrdersController < ApplicationController
     def order_params
 
          params.require(:order).permit(:postage, :payment_method, :ship_name, :ship_address, :ship_postcode, :customer_id,:charge,:status)
+
     end
 end
