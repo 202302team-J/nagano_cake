@@ -1,21 +1,24 @@
 <div class="container">
   <div class="row">
     <h3>注文履歴詳細</h3>
-    <p>
-      購入者　　　　　
-      <%= @order.customer
-    </p>
-    <p>
-      注文日　　　　　
-    </p>
-    <p>
-      配送先　　　　　
-    </p>
-    <p>
-      支払方法　　　　
-    </p>
-    <p>
-      注文ステータス　
-    </p>
+    <div>
+      <p>
+        購入者　　　　　
+        <%= @order.customer.full_name %>
+      </p>
+      <p>
+        注文日　　　　　
+        <%= @order.created_at.strftime("%Y/%m/%d") %>
+      </p>
+      <p>
+        配送先　　　　　
+      </p>
+      <p>
+        支払方法　　　　
+      </p>
+      <p>
+        注文ステータス　
+      </p>
+    </div>
   </div>
 </div>
