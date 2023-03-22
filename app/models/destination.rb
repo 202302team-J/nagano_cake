@@ -3,7 +3,7 @@ class Destination < ApplicationRecord
 
 
   def address_display
-    '〒' + postcode + ' ' + address + ' ' + name
+    '〒' + postcode.to_s + ' ' + address.to_s + ' ' + name.to_s
   end
 
 end
