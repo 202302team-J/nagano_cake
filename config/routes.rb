@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show]
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:new, :create, :index, :show, :edit]
+    resources :items, only: [:new, :create, :index, :show, :edit, :update]
     root 'homes#top'
   end
 
@@ -17,8 +17,7 @@ Rails.application.routes.draw do
  end
 
   namespace :public do
-    get 'destinations/index'
-    get 'destinations/edit'
+    resources :destinations, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :public do
     get 'items/index'
