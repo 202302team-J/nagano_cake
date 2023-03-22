@@ -17,8 +17,7 @@ Rails.application.routes.draw do
  end
 
   namespace :public do
-    get 'destinations/index'
-    get 'destinations/edit'
+    resources :destinations, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :public do
     get 'items/index'
