@@ -11,9 +11,7 @@
            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
 
-     <% end %>
        <!-- 会員登録時の住所を表示させる-->
-        <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
 
           <p>お届け先</p>
                <!--自身の住所の場合＝＝０として設定する。-->
@@ -26,17 +24,15 @@
                <%= @customer.family_name %>
                <%= @customer.personal_name %>
              </p>
-         <% end %>
+
            <!--登録してある配送先住所をプルダウンの中から選択する-->
-         <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
+
                <!--登録した住所の場合＝＝１として設定する。-->
                 <%= f.radio_button :address_option, 1 %>
                 <%= f.label :order_address, "登録済住所から選択" %><br>
 
               <%= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %>
-          <% end %>
 
-          <%= form_with model: @order, url: public_orders_confirm_path, method: :post do |f| %>
 
                 <%= f.radio_button :address_option, 2  %>
                 <%= f.label :order_address, "新しいお届け先" %>
