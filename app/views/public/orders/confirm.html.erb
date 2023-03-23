@@ -31,8 +31,8 @@
      <th>商品合計</th>
        <td><%= total.to_i %></td>
      <th>請求金額</th>
-     　<%= @order.charge = (@order.postage + total).to_i %>
-    　 <td><%= @order.charge %></td>
+      <%= @order.charge = (@order.postage + total).to_i %>
+       <td><%= @order.charge %></td>
     </tr>
   </table>
        <p>支払い方法
