@@ -28,12 +28,13 @@ Rails.application.routes.draw do
 
   namespace :public do
     post "orders/payment_method" => "orders#payment_method"
-    get 'orders/confirm'
+    post 'orders/confirm'
     get 'orders/thanks'
     resources :orders, only: [:new, :show, :create, :index]
   end
   namespace :public do
-    get 'cart_items/index'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
   end
   namespace :public do
     get 'homes/about'
