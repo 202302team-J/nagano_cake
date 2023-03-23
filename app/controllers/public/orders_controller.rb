@@ -15,7 +15,12 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
+    @total = 0
+    @order.order_details.each do |detail|
+    @total = @total+detail.subtotal
+    end
   end
+
 
   def confirm
     @order = Order.new(order_params)
