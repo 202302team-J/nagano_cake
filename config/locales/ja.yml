@@ -31,13 +31,12 @@ ja:
         address: 住所
         telephone_number: 電話番号
         is_deleted: 退会フラグ
-      item: #北嶋追加　商品新規登録のエラーメッセージ用
+      item: #北嶋追加　商品新規登録・編集のエラーメッセージ用
         image: 商品画像
         name: 商品名
         description: 商品説明
-        genre_id: ジャンル
         price: 税抜価格
-        is_active: 販売ステータス
+        genre: ジャンル
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

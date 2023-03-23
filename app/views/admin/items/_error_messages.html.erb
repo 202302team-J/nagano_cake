@@ -1,6 +1,6 @@
 <% if item.errors.any? %>
-<div class="alert alert-danger" role="alert">
-  <h3>エラーが発生しました。以下の項目について確認してください。</h3>
+<div class="alert alert-danger badge-danger" role="alert">
+  <h4>◆エラーが発生しました。入力内容を確認してください◆</h4>
   <ul>
     <% item.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -8,4 +8,3 @@
   </ul>
   </div>
 <% end %>
-
