@@ -1,3 +1,6 @@
+<div class="container">
+  <div class="row">
+
 <h2>注文履歴詳細</h2>
 
    <a>注文情報</a>
@@ -54,10 +57,15 @@
       </tr>
      </thead>
      <tbody>
-       <% @order_details.each do |detail| %>
+      <tr>
+         <% @order_details.each do |detail| %>
        <td><%= detail.item_name %></td>
        <td>¥<%= detail.tax_price.floor.to_s(:delimited) %></td>
        <td><%= detail.count %></td>
-       <td>¥<%= (detail.tax_price+detail.item_count).floor.to_s %> </td>
+       <td>¥<%= (detail.tax_price+detail.item_count).floor.to_s(:delimited) %> </td>
+      </tr>
+      <% end %>
      </tbody>
    </table>
+  </div>
+ </div>
