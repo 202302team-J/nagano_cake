@@ -24,7 +24,7 @@
                <%= @customer.family_name %>
                <%= @customer.personal_name %>
              </p>
-             
+
                <!--配送先登録した住所の場合＝＝１として設定する。-->
                 <%= f.radio_button :address_option, 1 %>
                 <%= f.label :order_address, "登録済住所から選択" %><br>
@@ -42,7 +42,7 @@
              </tr>
              <tr>
                 <td><%= f.label :ship_address, "住所" %></td>
-                <td><%= f.text_field :ship_address %></td>
+                <td><%= f.text_field :ship_address, :size=>"60" %></td>
              </tr>
              <tr>
                <td><%= f.label :ship_name, "宛名" %></td>

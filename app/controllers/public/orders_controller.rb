@@ -48,11 +48,10 @@ class Public::OrdersController < ApplicationController
   def create
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
-      @order.save
 
-
+      if @order.save
       current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-      @ordered_item = OrderedItem.new #初期化宣言
+      @ordered_item = OrderedItem.new (order_id :@order.id)#初期化宣言
       @ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
       @ordered_item.item_count = cart_item.item_count #商品の個数を注文商品の個数に代入
       @ordered_item.tax_price = (cart_item.price*1.10).floor #消費税込みに計算して代入
@@ -63,7 +62,11 @@ class Public::OrdersController < ApplicationController
 
       current_customer.cart_items.destroy_all #カートの中身を削除
       redirect_to public_orders_thanks_path
+      else
+       render "new"
+      end
   end
+
 
   def thanks
   end
