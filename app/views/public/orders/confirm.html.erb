@@ -10,41 +10,41 @@
     <% @cart_items.each do |cart_item| %>
      <tr>
        <td>
-         <%= attachment_image_tag(cart_item.item, :image, size: "60x50", fallback: "no_image.jpg") %>
+         <%= attachment_image_tag(cart_item.item, :image, size: "60x50") %>
          <%= cart_item.item.name %>
        </td>
-       <td><%= (cart_item.price*1.08).to_i %></td>
+       <td><%= (cart_item.item.price*1.10).to_i %></td>
        <td><%= cart_item.item_count %></td>
        <td>
-           <% subtotal = ((cart_item.price*cart_item.count)*1.08).to_i %> <!--小計の計算-->
+           <% subtotal = ((cart_item.price*cart_item.count)*1.10).to_i %> <!--小計の計算-->
            <%= subtotal %>
        </td>
      </tr>
           <!--商品ごとに合計金額に加算-->
-      <% total += (cart_item.price*cart_item.count)*1.08 %>
+      <% total += (cart_item.price*cart_item.count)*1.10 %>
      <% end %>
   </table>
   <table>
     <tr>
      <th>送料</th>
-       <td><%= @order.postage %></td>
+       <td><%= @order.postage.to_i %></td>
      <th>商品合計</th>
        <td><%= total.to_i %></td>
      <th>請求金額</th>
-     　<%= @order.charge = @order.postage + total.to_i %>
+     　<%= @order.charge = @order.postage.to_i + total.to_i %>
     　 <td><%= @order.charge %></td>
     </tr>
   </table>
     <tr>
        <th>支払い方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
     </tr>
     <tr>
       <th>お届け先</th>
        <td>
-           <%= @order.shipping_post_code %> #郵便番号
-           <%= @order.shipping_address %>　 #住所
-           <%= @order.shipping_name %>      #名前
+           <%= @order.ship_postcode %>
+           <%= @order.ship_address %>
+           <%= @order.ship_name %>
       </td>
     </tr>
 
