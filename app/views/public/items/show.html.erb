@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="row">
+  
+   <div class="search col-2">
+    <table class="table table-borderless">
+     <thead>
+      <tr>
+       <th>ジャンル検索</th>
+      </tr>
+     </thead>
+     <tbody>
+       <% @genres.each do |item_genre| %>
+       <tr>
+        <td><%= link_to item_genre.name, public_items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
+       </tr>
+       <% end %>
+      </tbody>
+     </table>
+   </div>
+    
+    
+    
+    
+    <div class="item col-10 mx-auto">
+     <div class="image">
+      <%= image_tag @item.get_image(300,200) %>
+     </div>
+     <div class="status mt-3">
+      <b><%= @item.name %></b>
+         <%= @item.description %><br>
+      <b>¥<%= @item.add_tax_price.to_s(:delimited) %></b><small>（税込）</small>
+     </div>
+     <div class="add_cart mt-3">
+      <% if customer_signed_in? %>
+       <% if @item.is_active? %>
+        <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+         <%= f.hidden_field :item_id, :value => @item.id %>
+         <%= f.hidden_field :customer_id, :value => current_customer.id %>
+         <%= f.select :amount, *[1..10], :include_blank =>'　個数選択　' %>
+         <%= f.submit "カートに入れる", class:'btn btn-success' %>
+        <% end %>
+       <% else %>
+       <P class="text-light btn btn-danger">売り切れ</P>
+       <% end %>
+      <% end %>
+     </div>
+    </div>
+    
+  </div>
+</div>
