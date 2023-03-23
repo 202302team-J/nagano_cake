@@ -13,21 +13,23 @@ class Public::OrdersController < ApplicationController
 
 
   def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   def confirm
-      @order = Order.new(order_params)
+    @order = Order.new(order_params)
 
    if params[:order][:address_option] == "0" # [:address_option]=="0"を呼び出す
-      @order.shi_postcode = current_customer.postcode
-      @order.ship_address = current_customer.address
-      @order.ship_name = current_customer.last_name + current_customer.first_name
+    @order.shi_postcode = current_customer.postcode
+    @order.ship_address = current_customer.address
+    @order.ship_name = current_customer.last_name + current_customer.first_name
 
    elsif params[:order][:address_option] == "1" # [:address_option]=="1"を呼び出す
-      ship = Address.find(params[:order][:customer_id])
-      @order.ship_postcode = ship.postcode
-      @order.ship_address = ship.address
-      @order.ship_name = ship.name
+    ship = Address.find(params[:order][:customer_id])
+    @order.ship_postcode = ship.postcode
+    @order.ship_address = ship.address
+    @order.ship_name = ship.name
 
     　# 新規住所入力 [:address_option]=="2"としてデータをhtmlから受ける
    elsif params[:order][:address_option] = "2"
