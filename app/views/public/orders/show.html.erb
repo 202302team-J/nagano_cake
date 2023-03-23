@@ -38,7 +38,7 @@
        </tr>
        <tr>
          <td>配送料</td>
-         <td><%= 800.to_s+"円" %></td>
+         <td><%= 800.to_s %></td>
        </tr>
        <tr>
          <td>ご請求額</td>
@@ -60,10 +60,18 @@
      <tbody>
       <tr>
          <% @order_details.each do |detail| %>
-       <td><%= detail.item_name %></td>
-       <td>¥<%= detail.tax_price.floor.to_s(:delimited) %></td>
-       <td><%= detail.item_count %></td>
-       <td>¥<%= drtail.subtotal.floor.to_s(:delimited) %> </td>
+       <td>
+         <%= detail.item_name %>
+       </td>
+       <td>
+         ¥<%= detail.tax_price.floor.to_s(:delimited) %>
+       </td>
+       <td>
+         <%= detail.item_count %>
+       </td>
+       <td>
+         ¥<%= drtail.subtotal.floor.to_s(:delimited) %>
+       </td>
       </tr>
       <% end %>
      </tbody>
