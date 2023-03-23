@@ -2,6 +2,7 @@
   <div class="row">
     <h3>注文履歴詳細</h3>
     <div>
+      <%= form_with model: @order, url: admin_order_path, method: :patch do |f| %>
       <p>
         <%= "購入者　　　　　" %>
         <%= link_to admin_customers_path(@order.customer) do %>
@@ -9,21 +10,19 @@
         <% end %>
       </p>
       <p>
-        <%= "注文日　　　　　" %>
-        <%= @order.created_at.strftime("%Y/%m/%d") %>
+        注文日　　　　　<%= @order.created_at.strftime("%Y/%m/%d ") %>
       </p>
       <p>
-        <%= "配送先　　　　　" %>
-        <%= @order.ship_address %>
+        配送先　　　　　<%= @order.ship_address %>
       </p>
       <p>
-        <%= "支払方法　　　　" %>
-        <%= @order.payment_method_i18n %>
+        支払方法　　　　<%= @order.payment_method_i18n %>
       </p>
       <p>
         <%= "注文ステータス　" %>
         <%= @order.status_i18n %>
       </p>
+      <% end %>
     </div>
     <div>
       <table class="table">
@@ -37,26 +36,30 @@
           </tr>
         </thead>
         <tbody>
+          <% @order.order_details.each do |detail| %>
           <tr>
-
             <td>
-
+              <%= detail.item.name %>
             </td>
             <td>
-
+              <%= detail.tax_price %>
             </td>
             <td>
-
+              <%= detail.item_count %>
             </td>
             <td>
-
+              <%= detail.subtotal %>
             </td>
             <td>
-
+              <%= detail.making_status_i18n %>
             </td>
           </tr>
+          <% end %>
         </tbody>
       </table>
+      <p>商品合計　　　<%= @total.to_s(:delimited)+"円" %></p>
+      <p>送料　　　　　<%= 800.to_s(:delimited)+"円" %></p>
+      <p>請求金額合計　<%= @order.charge.to_s(:delimited)+"円" %></p>
     </div>
   </div>
 </div>

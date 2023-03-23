@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
-    resources :orders, only: [:show]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
@@ -27,13 +28,12 @@ Rails.application.routes.draw do
 
   namespace :public do
     post "orders/payment_method" => "orders#payment_method"
-    post 'orders/confirm'
+    get 'orders/confirm'
     get 'orders/thanks'
     resources :orders, only: [:new, :show, :create, :index]
   end
   namespace :public do
-    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :cart_items, only: [:index, :update, :create, :destroy]
+    get 'cart_items/index'
   end
   namespace :public do
     get 'homes/about'
@@ -42,7 +42,6 @@ Rails.application.routes.draw do
   namespace :public do
     get 'items/public/homes'
   end
-
   # namespace :public do
   #   get '/customers/my_page' => 'customers#show', as: 'my_page'
   #   get '/customers/information/edit' => 'customers#edit', as: 'edit_my_page'
