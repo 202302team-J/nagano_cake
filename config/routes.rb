@@ -17,23 +17,23 @@ Rails.application.routes.draw do
  end
 
   namespace :public do
-    get 'destinations/index'
-    get 'destinations/edit'
+    resources :destinations, only: [:index, :edit, :create, :update, :destroy]
   end
   namespace :public do
-    get 'items/index'
-    get 'items/show'
+    resources :items, only: [:index, :show]
+    get 'items/genre_search'
+    #↑ジャンル検索機能のやつですが、未実装です
   end
 
   namespace :public do
-    get 'orders/new'
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/confirm'
+    post "orders/payment_method" => "orders#payment_method"
+    post 'orders/confirm'
     get 'orders/thanks'
+    resources :orders, only: [:new, :show, :create, :index]
   end
   namespace :public do
-    get 'cart_items/index'
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :create, :destroy]
   end
   namespace :public do
     get 'homes/about'
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   namespace :public do
     get 'items/public/homes'
   end
+
   # namespace :public do
   #   get '/customers/my_page' => 'customers#show', as: 'my_page'
   #   get '/customers/information/edit' => 'customers#edit', as: 'edit_my_page'
