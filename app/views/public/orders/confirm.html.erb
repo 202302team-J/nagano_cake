@@ -24,31 +24,26 @@
       <% total += (cart_item.tax_price*cart_item.count) %>
      <% end %>
   </table>
-  <table>
+  <table class="table table-bordered">
     <tr>
      <th>送料</th>
-       <td><%= 800.to_i %></td>
+       <td><%= @order.postage = 800.to_i %></td>
      <th>商品合計</th>
        <td><%= total.to_i %></td>
      <th>請求金額</th>
-     　<%= @order.charge = @order.postage.to_i + total.to_i %>
+     　<%= @order.charge = (@order.postage + total).to_i %>
     　 <td><%= @order.charge %></td>
     </tr>
   </table>
-    <tr>
-       <th>支払い方法</th>
-        <td><%= @order.payment_method_i18n %></td>
-    </tr>
-    <tr>
-      <th>お届け先</th>
-       <td>
-           <%= @order.ship_postcode %>
+       <p>支払い方法
+        <%= @order.payment_method_i18n %>
+       </p>
+      <p>お届け先
+           〒<%= @order.ship_postcode %>
            <%= @order.ship_address %>
            <%= @order.ship_name %>
-      </td>
-    </tr>
-
-  <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+      </p>
+     <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
     <%= f.hidden_field :customer_id %>
     <%= f.hidden_field :postage %>
     <%= f.hidden_field :charge %>
