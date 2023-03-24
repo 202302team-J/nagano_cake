@@ -67,7 +67,7 @@ class Public::OrdersController < ApplicationController
      end
 
       current_customer.cart_items.destroy_all #カートの中身を削除
-      redirect_to thanks_orderspath
+      redirect_to thanks_orders_path
       else
        render "new"
       end
