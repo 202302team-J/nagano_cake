@@ -11,7 +11,7 @@
      <tbody>
        <% @genres.each do |item_genre| %>
        <tr>
-        <td><%= link_to item_genre.name, public_items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
+        <td><%= link_to item_genre.name, items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
        </tr>
        <% end %>
       </tbody>
@@ -33,7 +33,7 @@
      <div class="add_cart mt-3">
       <% if customer_signed_in? %>
        <% if @item.is_active? %>
-        <%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+        <%= form_with model: @cart_item, url: cart_items_path do |f| %>
          <%= f.hidden_field :item_id, :value => @item.id %>
          <%= f.hidden_field :customer_id, :value => current_customer.id %>
          <%= f.select :count, *[1..10], :include_blank =>'　個数選択　' %>
