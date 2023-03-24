@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
 
       if @order.save
         current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-        @ordered_item = Order.new (order_id :@order.id)#初期化宣言
+       @ordered_item = Order.new (order_id :@order.id)#初期化宣言
         ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
         ordered_item.item_count = cart_item.item_count #商品の個数を注文商品の個数に代入
         ordered_item.add_tax_price = (cart_item.add_tax_price).round #消費税込みに計算して代入
