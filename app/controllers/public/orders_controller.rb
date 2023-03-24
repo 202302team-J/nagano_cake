@@ -16,17 +16,13 @@ class Public::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
-    
+
   end
 
 
   def confirm
     @order = Order.new(order_params)
-    @total = 0
-    @order.order_details.each do |detail|
-    @total = @total+detail.subtotal
-  end
-  
+
    if params[:order][:address_option] == "0" # [:address_option]=="0"を呼び出す
       @order.ship_postcode = current_customer.postcode
       @order.ship_address = current_customer.address
@@ -49,6 +45,10 @@ class Public::OrdersController < ApplicationController
    end
 
       @cart_items = current_customer.cart_items.all
+      @total = 0
+      @cart_items.each do |cart_item|
+      @total = @total+cart_item.subtotal
+    end
       @order.customer_id = current_customer.id
   end
 
@@ -57,14 +57,14 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
 
       if @order.save
-      current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-       @ordered_item = OrderedItem.new (order_id :@order.id)#初期化宣言
-       ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-       ordered_item.item_count = cart_item.item_count #商品の個数を注文商品の個数に代入
-       ordered_item.tax_price = (cart_item.price*1.10).floor #消費税込みに計算して代入
-       ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
-       ordered_item.status = 0
-       ordered_item.save
+        current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
+        @ordered_item = Order.new (order_id :@order.id)#初期化宣言
+        ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
+        ordered_item.item_count = cart_item.item_count #商品の個数を注文商品の個数に代入
+        ordered_item.add_tax_price = (cart_item.add_tax_price).round #消費税込みに計算して代入
+        ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
+        ordered_item.status = 0
+        ordered_item.save
      end
 
       current_customer.cart_items.destroy_all #カートの中身を削除

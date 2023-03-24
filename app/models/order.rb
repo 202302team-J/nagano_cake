@@ -9,11 +9,11 @@ class Order < ApplicationRecord
   end
 
   def add_tax_price
-    (self.price*1.10).round
+    (item.price*1.10).round
   end
 
   def subtotal
-    item.add_tax_price * count
+    item.add_tax_price * item_count
   end
 
 end
