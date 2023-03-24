@@ -1,2 +1,21 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+
+.table {
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+header {
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+.add-font{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
