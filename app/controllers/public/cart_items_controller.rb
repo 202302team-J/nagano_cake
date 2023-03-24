@@ -20,14 +20,14 @@ class Public::CartItemsController < ApplicationController
      cart_item = CartItem.new(cart_item_params)
      cart_item.save
     end
-     redirect_to  public_cart_items_path
+     redirect_to  cart_items_path
   end
 
 
   def update
     @cart_item = CartItem.find(params[:id])
     if @cart_item.update(cart_item_params)
-    redirect_to public_cart_items_path, notice: "商品の追加に成功しました。"
+    redirect_to cart_items_path, notice: "商品の追加に成功しました。"
     else
     render "index"
     end
@@ -36,7 +36,7 @@ class Public::CartItemsController < ApplicationController
   def destroy
     @cart_item = CartItem.find(params[:id])
     if @cart_item.destroy
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
     else
     render "index"
     end
@@ -44,7 +44,7 @@ class Public::CartItemsController < ApplicationController
 
   def destroy_all
     if current_customer.cart_items.destroy_all
-    redirect_to public_cart_items_path
+    redirect_to cart_items_path
     else
     render "index"
     end
