@@ -1,2 +1,24 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 mx-auto my-1">
+      <h4><%= @customer.full_name %>さんの会員情報編集</h4>
+      <%= form_with model: @customer, url: admin_customer_path do |f| %>
+      <div class="col-md-9 d-flex justify-content-start">
+        <div class="col-auto">
+          <p>会員ID</p>
+          <p>氏名</p>
+          <p>フリガナ</p>
+          <p>郵便番号</p>
+          <p>住所</p>
+          <p>電話番号</p>
+          <p>メールアドレス</p>
+          <p>会員ステータス</p>
+        </div>
+        <div class="col-auto">
+          
+        </div>
+      </div>
+      <%= f.submit "変更を保存" ,class: "btn btn-success" %>
+    </div>
+  </div>
+</div>
