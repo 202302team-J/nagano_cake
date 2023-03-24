@@ -15,8 +15,8 @@
 
           <p>お届け先</p>
                <!--自身の住所の場合＝＝０として設定する。-->
-             <%= f.radio_button :address_option, 0, checked: "checked" %>
-             <%= f.label :order_address, "ご自身の住所" %><br>
+               <%= f.radio_button :address_option, 0, checked: "checked" %>
+               <%= f.label :order_address, "ご自身の住所" %><br>
 
              〒<%= @customer.postcode %>
                <%= @customer.address %>
@@ -25,15 +25,13 @@
                <%= @customer.personal_name %>
              </p>
 
-           <!--登録してある配送先住所をプルダウンの中から選択する-->
-
-               <!--登録した住所の場合＝＝１として設定する。-->
+               <!--配送先登録した住所の場合＝＝１として設定する。-->
                 <%= f.radio_button :address_option, 1 %>
                 <%= f.label :order_address, "登録済住所から選択" %><br>
+                 <!--登録してある配送先住所をプルダウンの中から選択する-->
+                <%= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %><br>
 
-              <%= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %>
-
-
+               <!--新しいお届け先の場合＝＝２として設定する。-->
                 <%= f.radio_button :address_option, 2  %>
                 <%= f.label :order_address, "新しいお届け先" %>
 
@@ -44,7 +42,7 @@
              </tr>
              <tr>
                 <td><%= f.label :ship_address, "住所" %></td>
-                <td><%= f.text_field :ship_address %></td>
+                <td><%= f.text_field :ship_address, :size=>"60" %></td>
              </tr>
              <tr>
                <td><%= f.label :ship_name, "宛名" %></td>
