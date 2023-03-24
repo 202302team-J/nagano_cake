@@ -43,7 +43,7 @@
            <%= @order.ship_address %>
            <%= @order.ship_name %>
       </p>
-     <%= form_with model: @order, url: public_orders_path, method: :post do |f| %>
+     <%= form_with model: @order, url: orders_path, method: :post do |f| %>
     <%= f.hidden_field :customer_id %>
     <%= f.hidden_field :postage %>
     <%= f.hidden_field :charge %>

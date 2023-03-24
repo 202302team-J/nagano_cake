@@ -14,7 +14,7 @@ class Public::DestinationsController < ApplicationController
       destination = Destination.new(destination_params)
       destination.customer_id = current_customer.id
    if destination.save
-      redirect_to public_destinations_path
+      redirect_to destinations_path
    else
       render :index
    end
@@ -23,7 +23,7 @@ class Public::DestinationsController < ApplicationController
   def update
       @destination = Destination.find(params[:id])
    if @destination.update(destination_params)
-      redirect_to public_destinations_path
+      redirect_to destinations_path
    else
       @destination = Destination.find(params[:id])
       render :edit
@@ -33,7 +33,7 @@ class Public::DestinationsController < ApplicationController
   def destroy
       destination = Destination.find(params[:id])
       destination.delete
-      redirect_to  public_destinations_path
+      redirect_to destinations_path
   end
 
   private
