@@ -1,43 +1,7 @@
 
-
-        <table>
-      <thead>
-       <tr>
-        <th>ジャンル検索</th>
-       </tr>
-      </thead>
-      <tbody>
-      　　 <% @genres.each do |item_genre| %>
-        <tr>
-         <td><%= link_to item_genre.name, public_items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
-        </tr>
-       <% end %>
-      </tbody>
-     </table>
-
-       <div class = "d-block mx-auto">
-           <%= image_tag "top1.jpg", size: '1000x400' %>
-       </div>
-          <div class="main-visual">
-           <p class="main-visual-text">
-             ようこそ、NaganoCakeへ！<br>
-             このサイトは、ケーキ販売のECサイトになります。<br>
-             会員でない方も商品の閲覧はできますが、<br>
-             購入には会員登録が必要になります。
-           </p>
-          </div>
-    <h2>オススメ商品</h2>
-      <% @items.each do |item| %>
-        <%= link_to public_item_path(item) %>
-          <%= image_tag item.get_image(100, 100) %><br>
-          <span><%= item.name %></span>
-          <span><%= item.tax_price.floor %> 円</span>
-        <% end %>
-      <%= paginate @items %>
-
 <div class="container mt-3">
  <div class="row">
-       
+
   <div class="col-2">
    <table class="table table-borderless">
     <thead>
@@ -54,14 +18,14 @@
     </tbody>
    </table>
   </div>
-  
+
   <div class="col-10">
    <div class="mb-5">ようこそ、Nagano cakeへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
         購入には会員登録が必要になります。
    </div>
-  
+
       <!--ここに新商品が４件程度させる-->
   <div class="col-10">
    <div class="d-flex">
@@ -83,7 +47,9 @@
    </div>
   </div>
  </div>
- 
+
  </div>
 </div>
+
+
 
