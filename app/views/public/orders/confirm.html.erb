@@ -9,8 +9,9 @@
     <% @cart_items.each do |cart_item| %>
      <tr>
        <td>
-         <%= attachment_image_tag(cart_item.item, :image, size: "60x50") %>
+         <%= image_tag cart_item.item.get_image(60,50) %>
          <%= cart_item.item.name %>
+        </td>
        </td>
        <td><%= (cart_item.item.add_tax_price).to_i %></td>
        <td><%= cart_item.count %></td>
