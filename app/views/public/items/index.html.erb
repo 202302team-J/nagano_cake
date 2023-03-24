@@ -12,7 +12,7 @@
       <tbody>
        <% @genres.each do |item_genre| %>
         <tr>
-         <td><%= link_to item_genre.name, public_items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
+         <td><%= link_to item_genre.name, items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
         </tr>
        <% end %>
       </tbody>
@@ -27,7 +27,7 @@
      <div class="d-flex align-content-start flex-wrap">
         <% @items.each do |item| %>
           <div class="item col">
-            <%= link_to public_item_path(item) do %>
+            <%= link_to item_path(item) do %>
               <%= image_tag item.get_image(160,200) %>
             <% end %>
             <div class="item"><%= item.name %></div>
