@@ -26,7 +26,7 @@
             <tr>
               <td class="text-center p-2"><%= item.id %></td>
               <td class="text-left p-2">
-                <%= link_to admin_item_path(item) do %>
+                <%= link_to admin_item_path(item), class: "text-reset", style: "text-decoration: black underline" do %>
                   <%= item.name %>
                 <% end %>
               </td>

@@ -1,13 +1,12 @@
-<header class="alert-danger shadow-sm p-2">
+<header class="alert-danger shadow-sm p-1">
   <nav class="navbar navbar-expand-lg navbar-light text-right">
-    <div class="container">
-      <!--<a class="navbar-brand p-3" href="/">--><!--<ロゴ></a>-->
-      <a class="navbar-brand" href="/"><span>Nagano Cake</span></a>
+    <div class="container  mr-0">
+      <a class="navbar-brand" href="/"><%= image_tag("logo.png") %></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                       aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse p-4" id="navbarNavDropdown">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
 
           <!--管理者側がログインしている時＋２つのアカウントでのログインを許容する -->
@@ -45,6 +44,10 @@
 
             <!--顧客側がログインしている時 -->
           <% elsif customer_signed_in? %>
+            <li>
+              <p class="nav-link text-dark mr-5">ようこそ、<%= current_customer.family_name %>さん！</p>
+            </li>
+            <li>
             <li class="nav-item">
               <%= link_to "マイページ", my_page_customers_path(current_customer), class: 'btn btn-outline-secondary mb-3' %>
             </li>
@@ -76,5 +79,27 @@
           </ul>
         </div>
       </div>
-    </nav>
+
+      <!--検索窓（実際に検索はできません） -->
+      <div class="search_form">
+        <% if admin_signed_in? %>
+          <%= form_with url: admin_root_path, method: :get do |f| %>
+            <div class="input-group mb-3">
+              <%= f.text_field :word, class: "form-control search-control mr-1", placeholder: "Search..." %>
+              <%= button_tag type: "submit", class: "btn btn-light search-btn " do %>
+            <i class="fas fa-search"></i>
+              <% end %>
+          <% end %>
+        <% else %>
+          <%= form_with url: root_path, method: :get do |f| %>
+            <div class="input-group mb-3">
+              <%= f.text_field :word, class: "form-control search-control mr-1", placeholder: "Search..." %>
+              <%= button_tag type: "submit", class: "btn btn-light " do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 </header>
