@@ -1,23 +1,25 @@
-<div class='container'>
-  <div class='row'>
-    <div>
-      <h2 >管理者ログイン</h2>
-      <%= form_with model: @admin, url: admin_session_path do |f| %>
-        <div class="field text-center">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード%>
-    <%= f.password_field :password, autocomplete: "current-password", class: "password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン", class: 'btn btn-sm btn-primary' %>
-  </div>
-<% end %>
-<%= render "admin/shared/links" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto my-5">
+      <h3 class="my-5">管理者ログイン</h3>
+        <div class="ml-3">
+          <div class="mb-5 px-3">
+          <%= form_with model: @admin, url: admin_session_path do |f| %>
+            <div class="row form-group">
+              <%= f.label :"メ ー ル ア ド レ ス", class: "col-3 mx-auto" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "admin@sample.com", class: "col-8 form-control" %>
+            </div>
+            <div class="row form-group">
+              <%= f.label :"パ ス ワ ー ド", class: "col-3 mx-auto" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "col-8 form-control" %>
+            </div>
+            <div class="text-center">
+              <%= f.submit "  ログイン  ", class: "btn btn-outline-primary" %>
+            </div>
+          <% end %>
+          <%= render "admin/shared/links" %>
+          </div>
+        </div>
     </div>
   </div>
 </div>
