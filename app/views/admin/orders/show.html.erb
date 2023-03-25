@@ -61,6 +61,7 @@
                                               ["製作待ち","waiting_production"],
                                               ["製作中","in_production"],
                                               ["製作完了","completion_production"]] %>
+                <%= f.hidden_field :order_id ,:value=> @order.id %>
                 <%= f.submit "更新", class:'btn btn-success' %>
               <% end %>
             </td>
