@@ -15,7 +15,33 @@
           <p>会員ステータス</p>
         </div>
         <div class="col-auto">
-          
+          <div class="col-auto d-flex">
+            <div class="col-auto">
+              <%= f.text_field :family_name, autofocus: true, required: true, autocomplete: "family_name" %>
+            </div>
+            <div class="col-auto">
+              <%= f.text_field :personal_name, required: true, autocomplete: "personal_name" %>
+            </div>
+          </div>
+          <div class="col-auto d-flex">
+            <div class="col-auto">
+              <%= f.text_field :family_name_ruby, required: true, autocomplete: "family_name_ruby" %>
+            </div>
+            <div class="col-auto">
+              <%= f.text_field :personal_name_ruby, required: true, autocomplete: "personal_name_ruby" %>
+            </div>
+          </div>
+          <p><%= f.text_field :postcode, required: true, autocomplete: "postcode" %></p>
+          <p><%= f.text_field :address, :size=>"72", required: true, autocomplete: "address" %></p>
+          <p><%= f.text_field :telephone_number, required: true, autocomplete: "telephone_number" %></p>
+          <p><%= f.email_field :email, required: true, autocomplete: "email" %></p>
+          <p>
+          <%= f.radio_button :is_deleted, :false %>
+          <%= f.label :is_deleted_false, "有効" %>
+
+          <%= f.radio_button :is_deleted, :true %>
+          <%= f.label :is_deleted_true, "退会" %>
+          </p>
         </div>
       </div>
       <%= f.submit "変更を保存" ,class: "btn btn-success" %>
