@@ -23,6 +23,4 @@ class Item < ApplicationRecord
   def subtotal
   item.add_tax_price * count
   end
-
-
 end
