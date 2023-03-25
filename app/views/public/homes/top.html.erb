@@ -1,5 +1,5 @@
 <div class="container add-font">
-  <div class="col-2">
+  <div class="col-auto">
    <table class="table table-borderless">
     <thead>
      <tr>
@@ -14,16 +14,13 @@
     <% end %>
     </tbody>
    </table>
-  </div>
-   <div class ="text-center">
-           <%= image_tag "top1.jpg", size: '800x300' %>
-   </div>
-   <div class="text-center">ようこそ、Nagano cakeへ！<br>
+   <div class ="text-center jumbotron jumbotron-fluid">
+        <%= image_tag "top1.jpg", size: '800x300' %>
+         <p>ようこそ、Nagano cakeへ！<br>
         このサイトは、ケーキ販売のECサイトになります。<br>
         会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-   </div>
-
+        購入には会員登録が必要になります。</p>
+  </div>
       <!--ここに新商品が４件程度させる-->
   <div class="col-10">
    <div class="d-flex">
