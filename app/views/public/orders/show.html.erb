@@ -1,7 +1,7 @@
 
       <h2>注文履歴詳細</h2>
        <div class="container add-font">
-        
+
          <h4>注文情報 <h4>
           <div class="d-flex">
            <table class="col-7 table table-bordered">
@@ -60,7 +60,7 @@
         <tr>
            <% @order_details.each do |detail| %>
          <td>
-           <%= detail.item_name %>
+           <%= detail.item.name %>
          </td>
          <td>
            ¥<%= detail.tax_price.floor.to_s(:delimited) %>
@@ -69,7 +69,7 @@
            <%= detail.item_count %>
          </td>
          <td>
-           ¥<%= drtail.subtotal.floor.to_s(:delimited) %>
+           ¥<%= (detail.tax_price * detail.item_count).round.to_s(:delimited) %>
          </td>
         </tr>
          <% end %>

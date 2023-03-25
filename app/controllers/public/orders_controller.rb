@@ -11,15 +11,6 @@ class Public::OrdersController < ApplicationController
     @orders = current_customer.orders.all
   end
 
-
-
-  def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
-
-  end
-
-
   def confirm
     @order = Order.new(order_params)
 
@@ -41,6 +32,7 @@ class Public::OrdersController < ApplicationController
       @order.ship_name = params[:order][:ship_name]
 
    else
+      @order = Order.new(order_params)
       render 'new'
    end
 
@@ -52,28 +44,34 @@ class Public::OrdersController < ApplicationController
       @order.customer_id = current_customer.id
   end
 
-  def create
-      @order = Order.new(order_params)
-      @order.customer_id = current_customer.id
+  def show
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+  end
 
-      if @order.save
+  def create
+        @order = Order.new(order_params)
+        @order.customer_id = current_customer.id
+
+
+     if @order.customer.cart_items.count >= 1
+        @order.save
         current_customer.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-       ordered_item = Order.new #初期化宣言
-       ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-       ordered_item.item_count = cart_item.item_count #商品の個数を注文商品の個数に代入
-       ordered_item.add_tax_price = (cart_item.add_tax_price).round #消費税込みに計算して代入
-       ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
-       ordered_item.status = 0
-       ordered_item.save
+        @order_detail = OrderDetail.new
+        @order_detail.item_id = cart_item.item_id
+        @order_detail.item_count = cart_item.count
+        @order_detail.tax_price = (cart_item.item.add_tax_price).round
+        @order_detail.order_id =  @order.id #注文商品に注文idを紐付け
+        @order_detail.making_status = 0
+        @order_detail.save
      end
 
       current_customer.cart_items.destroy_all #カートの中身を削除
       redirect_to thanks_orders_path
       else
        render "new"
-      end
+     end
   end
-
 
   def thanks
   end
