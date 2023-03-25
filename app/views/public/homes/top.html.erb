@@ -32,7 +32,7 @@
    </div>
    <div class="d-flex align-content-start flex-wrap max-auto mb-2">
    <% @items.each do |item| %>
-    <div class="item col">
+    <div class="item col img-container-top">
      <%= link_to item_path(item) do %>
      <%= image_tag item.get_image(150,160) %>
      <% end %>
