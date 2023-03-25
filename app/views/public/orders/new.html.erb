@@ -1,5 +1,5 @@
 
-
+<div class="container add-font">
 <h1>注文情報入力</h1>
 <!--支払い方法の選択-->
     <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
@@ -49,5 +49,8 @@
                <td><%= f.text_field :ship_name %></td>
              </tr>
             </table>
-          <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
-          <% end %>
+           <div class="row offset-md-5 mt-5 font-weight-bold">
+            <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+            <% end %>
+          </div>
+      </div>
