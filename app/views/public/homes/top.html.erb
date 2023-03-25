@@ -1,11 +1,51 @@
-
-<div class="center-block">
-      <div>ようこそ、Nagano cakeへ！<br>
-      このサイトは、ケーキ販売のECサイトになります。<br>
-      会員でない方も商品の閲覧はできますが、<br>
-      購入には会員登録が必要になります。
-      </div>
-
+<div class="container mt-3 add-font add-font">
+ <div class="row">
+       
+  <div class="col-2">
+   <table class="table table-borderless">
+    <thead>
+     <tr>
+      <th class= "test">ジャンル検索</th>
+     </tr>
+    </thead>
+    <tbody>
+    <% @genres.each do |item_genre| %>
+     <tr>
+      <td><%= link_to item_genre.name, items_path, class: 'text-reset', style: "text-decoration: green underline" %></td>
+     </tr>
+    <% end %>
+    </tbody>
+   </table>
+  </div>
+  
+  <div class="col-10">
+   <div class="mb-5">ようこそ、Nagano cakeへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。
+   </div>
+  
       <!--ここに新商品が４件程度させる-->
-      <h1><span>新着商品</span></h1>
+  <div class="col-10">
+   <div class="d-flex">
+    <h2 style="padding: 10px"><mark>新着商品</mark></h2>
+   </div>
+   <div class="d-flex align-content-start flex-wrap max-auto mb-2">
+   <% @items.each do |item| %>
+    <div class="item col">
+     <%= link_to item_path(item) do %>
+     <%= image_tag item.get_image(150,160) %>
+     <% end %>
+     <div class="item"><%= item.name %></div>
+     <div class="item">¥<%= item.price.to_s(:delimited) %></div>
     </div>
+    <% end %>
+   </div>
+   <div class="col text-right mb-2">
+    <%= link_to "全ての商品を見る　→", items_path, class:"text-right" %></td>
+   </div>
+  </div>
+ </div>
+ 
+ </div>
+</div>
