@@ -44,13 +44,15 @@
         </div>
       </div>
 
-       <p class="ml-5">支払い方法
-        <%= @order.payment_method_i18n %></p>
+       <div class="col-6">
+           <p>支払い方法
+              <%= @order.payment_method_i18n %></p>
 
-       <p class="ml-5">お届け先
-           〒<%= @order.ship_postcode %>
-           <%= @order.ship_address %></p>
-
+         お届け先
+           <p class="col-3">〒<%= @order.ship_postcode %>
+                              <%= @order.ship_address %><br>
+                               <%= @order.ship_name %></p>
+       </div>
 
      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
     <%= f.hidden_field :customer_id %>
@@ -61,5 +63,8 @@
     <%= f.hidden_field :ship_address %>
     <%= f.hidden_field :ship_postcode %>
     <%= f.hidden_field :status %>
+    <div class="text-center">
     <%= f.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
+    </div>
+  </div>
