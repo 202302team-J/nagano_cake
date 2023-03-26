@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container add-font">
   <div class="row">
     <div class="col-md-8 mx-auto my-5">
       <h3 class="my-5">管理者ログイン</h3>
@@ -6,11 +6,11 @@
           <div class="mb-5 px-3">
           <%= form_with model: @admin, url: admin_session_path do |f| %>
             <div class="row form-group">
-              <%= f.label :"メ ー ル ア ド レ ス", class: "col-3 mx-auto" %>
+              <%= f.label :"メールアドレス", class: "col-3 mx-auto" %>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "admin@sample.com", class: "col-8 form-control" %>
             </div>
             <div class="row form-group">
-              <%= f.label :"パ ス ワ ー ド", class: "col-3 mx-auto" %>
+              <%= f.label :"パスワード", class: "col-3 mx-auto" %>
               <%= f.password_field :password, autocomplete: "current-password", class: "col-8 form-control" %>
             </div>
             <div class="text-center">
