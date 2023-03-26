@@ -7,7 +7,7 @@ class Public::ItemsController < ApplicationController
     if params[:genre_id].present?
       #presentでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
       @genre = Genre.find(params[:genre_id])
-      @items = @cgenre.items
+      @items = @genre.items
     end
     
   end
