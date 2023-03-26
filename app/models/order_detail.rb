@@ -7,7 +7,6 @@ class OrderDetail < ApplicationRecord
                         completion_production: 3
   }
 
-
   def subtotal
     tax_price * item_count
   end

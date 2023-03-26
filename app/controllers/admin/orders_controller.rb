@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
-
+  
   def show
     @order = Order.find(params[:id])
     @total = 0
@@ -16,7 +16,6 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
     end
-
     redirect_to admin_order_path(@order)
   end
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
-    resources :customers, only: [:index, :show, :edit]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     root 'homes#top'
