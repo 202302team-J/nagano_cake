@@ -62,18 +62,18 @@
         </thead>
          <tbody>
           <tr>
-           <% @order_details.each do |detail| %>
+          　 <% @order_details.each do |detail| %>
           <td>
-           <%= detail.item.name %>
+          　 <%= detail.item.name %>
           </td>
           <td>
-           <%= detail.tax_price.floor.to_s(:delimited) %>
+          　 <%= detail.tax_price.floor.to_s(:delimited) %>
           </td>
           <td>
-           <%= detail.item_count %>
+          　 <%= detail.item_count %>
           </td>
           <td>
-           <%= (detail.tax_price * detail.item_count).round.to_s(:delimited) %>
+          　 <%= (detail.tax_price * detail.item_count).round.to_s(:delimited) %>
           </td>
          </tr>
          <% end %>
