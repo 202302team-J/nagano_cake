@@ -20,7 +20,12 @@
       </p>
       <p>
         <%= "注文ステータス　" %>
-        <%= @order.status_i18n %>
+        <%= f.select :status, [["入金待ち","waiting_for_payment"],
+                               ["入金確認","payment_confirmation"],
+                               ["製作中","in_production"],
+                               ["発送準備中","preparing_for_shipment"],
+                               ["発送済み","shipped"]] %>
+        <%= f.submit "更新", class:'btn btn-success' %>
       </p>
       <% end %>
     </div>
@@ -51,7 +56,14 @@
               <%= detail.subtotal %>
             </td>
             <td>
-              <%= detail.making_status_i18n %>
+              <%= form_with model: detail, url: admin_order_detail_path(detail), method: :patch do |f| %>
+                <%= f.select :making_status, [["着手不可","no_production"],
+                                              ["製作待ち","waiting_production"],
+                                              ["製作中","in_production"],
+                                              ["製作完了","completion_production"]] %>
+                <%= f.hidden_field :order_id ,:value=> @order.id %>
+                <%= f.submit "更新", class:'btn btn-success' %>
+              <% end %>
             </td>
           </tr>
           <% end %>
