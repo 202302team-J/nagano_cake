@@ -1,4 +1,4 @@
-<div class="container ml-5">
+<div class="container ml-5 add-font">
  <div class="row mt-5">
   <h2 class="col-md-5">ショッピングカート</h2>
   <div class="offset-md-5 col-md-2">
@@ -20,8 +20,8 @@
    <tbody class= "border border-dark">
     <% @cart_items.each do |item| %>
     <tr>
-     <td class= "border border-dark">
-      <%= image_tag item.item.get_image(120,75) %>
+     <td class= "img-container-cart border border-dark">
+      <%= image_tag item.item.get_image(100,75) %>
       <%= item.item.name %>
      </td>
      <td class= "border border-dark"><%= item.item.add_tax_price.to_s(:delimited) %></td>
