@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
-  
+
   def top
     @items = Item.order('id DESC').limit(4)
     @genres = Genre.all
@@ -8,5 +8,5 @@ class Public::HomesController < ApplicationController
   
   def about
   end
-  
+
 end
