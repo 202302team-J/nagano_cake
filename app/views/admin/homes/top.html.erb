@@ -1,12 +1,12 @@
-<div class="container">
-  <div class="row">
-    <div>
-      <h2>注文履歴一覧</h2>
+<div class="container add-font">
+  <div class="row-4">
+    <div class="col-md-10 mx-auto my-5">
+      <h3 class="m-0">注文履歴一覧</h3>
       <table class="table">
         <thead>
           <tr>
             <th>購入日時</th>
-            <th>購入者</th>
+            <th class="col-md-4">購入者</th>
             <th>注文個数</th>
             <th>注文ステータス</th>
           </tr>
@@ -14,7 +14,11 @@
         <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <td><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
+            <td>
+              <%= link_to admin_order_path(order), class:'text-reset', style:"text-decoration: underline" do %>
+                <%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %>
+              <% end %>
+            </td>
             <td>
               <%= order.customer.full_name %>
             </td>

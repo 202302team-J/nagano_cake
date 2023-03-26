@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
   end
-  
+
   def is_deleted
    @customer= current_customer
    if @customer.update(is_deleted: true)

@@ -2,8 +2,9 @@ Rails.application.routes.draw do
 
 # 管理側
   namespace :admin do
-    resources :orders, only: [:show]
-    resources :customers, only: [:index, :show, :edit]
+    resources :orders, only: [:show, :update]
+    resources :order_details, only: [:update]
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     root 'homes#top'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
      end
    end
  end
+
 
 
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
