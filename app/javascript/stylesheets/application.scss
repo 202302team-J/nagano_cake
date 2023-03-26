@@ -20,3 +20,23 @@ h1, h2, h3, h4, h5, h6{
   font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
 }
 
+<<<<<<< HEAD
+=======
+.img-container img {
+  width: 200px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.img-container-top img {
+  width: 150px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.img-container-cart img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+}
+>>>>>>> origin/develop
