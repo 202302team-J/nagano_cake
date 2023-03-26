@@ -30,6 +30,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdraw
+   @customer= current_customer
+   if @customer.update(is_deleted: true)
+    sign_out_and_redirect(current_customer)
+   else
+    render "unsubscribe"
+   end
   end
 
   def customer_params
