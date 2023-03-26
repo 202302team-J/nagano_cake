@@ -6,4 +6,15 @@ class OrderDetail < ApplicationRecord
                         in_production: 2,
                         completion_production: 3
   }
+
+
+  def subtotal
+    tax_price * item_count
+  end
+
+  private
+
+  def order_detail_params
+    params.require(:order_detail).permit(:making_status)
+  end
 end
