@@ -1,67 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 mx-auto my-3">
+    <div class="col-md-9 mx-auto my-3 justify-content-start" style="width:20%">
       <h4 class="my-3 bg-light"><%= @customer.full_name %>さんの会員情報編集</h4>
       <%= form_with model: @customer, url: admin_customer_path do |f| %>
-      <div class="row mt-5">
-        <p class="col-md-2">氏名</p>
-        <div class="col-md-3">
-          <%= f.text_field :family_name, autofocus: true, required: true, autocomplete: "family_name" %>
-        </div>
-        <div class="col-md-4">
-          <%= f.text_field :personal_name, required: true, autocomplete: "personal_name" %>
-        </div>
+
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">氏名</label>
+        <%= f.text_field :family_name, autofocus: true, required: true, autocomplete: "family_name", class: "form-control" %>
+        <%= f.text_field :personal_name, required: true, autocomplete: "personal_name", class: "form-control ml-5" %>
       </div>
 
-      <div class="row mt-1">
-        <p class="col-md-2">フリガナ</p>
-        <div class="col-md-3">
-          <%= f.text_field :family_name_ruby, required: true, autocomplete: "family_name_ruby" %>
-        </div>
-        <div class="col-md-4">
-          <%= f.text_field :personal_name_ruby, required: true, autocomplete: "personal_name_ruby" %>
-        </div>
-      </div>
-  
-      <div class="row mt-1">
-        <p class="col-md-2">郵便番号</p>
-  
-        <div class="field col-md-9">
-          <%= f.text_field :postcode, required: true, autocomplete: "postcode" %>
-        </div>
-      </div>
-  
-      <div class="row mt-1">
-        <p class="col-md-2">住所</p>
-        <div class="field col-md-9">
-          <%= f.text_field :address, :size=>"72", required: true, autocomplete: "address" %>
-        </div>
-      </div>
-  
-      <div class="row mt-1">
-        <p class="col-md-2">電話番号</p>
-        <div class="field col-md-9">
-          <%= f.text_field :telephone_number, required: true, autocomplete: "telephone_number" %>
-        </div>
-      </div>
-  
-      <div class="row mt-1">
-        <p class="col-md-2">メールアドレス</p>
-        <div class="field col-md-9">
-          <%= f.email_field :email, required: true, autocomplete: "email" %>
-        </div>
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">フリガナ</label>
+          <%= f.text_field :family_name_ruby, required: true, autocomplete: "family_name_ruby", class: "form-control" %>
+          <%= f.text_field :personal_name_ruby, required: true, autocomplete: "personal_name_ruby", class: "form-control ml-5" %>
       </div>
 
-      <div class="row mt-1">
-        <p class="col-md-2">会員ステータス</p>
-        <div class="field col-md-9">
-          <%= f.radio_button :is_deleted, :false %>
-          <%= f.label :is_deleted_false, "有効" %>
-
-          <%= f.radio_button :is_deleted, :true %>
-          <%= f.label :is_deleted_true, "退会" %>
-        </div>
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">郵便番号</label>
+        <%= f.text_field :postcode, required: true, autocomplete: "postcode", class: "form-control" %>
       </div>
+
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">住所</label>
+        <%= f.text_field :address, :size=>"72", required: true, autocomplete: "address", class: "form-control" %>
+      </div>
+
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">電話番号</label>
+        <%= f.text_field :telephone_number, required: true, autocomplete: "telephone_number", class: "form-control" %>
+      </div>
+
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">メールアドレス</label>
+        <%= f.email_field :email, required: true, autocomplete: "email", class: "form-control" %>
+      </div>
+
+      <div class="form-inline my-3">
+        <label class="font-weight-bold justify-content-start" style="width:20%">会員ステータス</label>
+        <%= f.radio_button :is_deleted, :false %>
+        <%= f.label :is_deleted_false, "有効", class:"mr-3" %>
+
+        <%= f.radio_button :is_deleted, :true %>
+        <%= f.label :is_deleted_true, "退会" %>
+      </div>
+
       <div>
         <%= f.submit "変更を保存" ,class: "btn btn-success" %>
       </div>
