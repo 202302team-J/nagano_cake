@@ -25,12 +25,13 @@
     </div>
     <div class="d-flex align-content-start flex-wrap img-container img">
      <% @items.each do |item| %>
-      <div class="item col">
+      <div class="col">
        <%= link_to item_path(item) do %>    
        <%= image_tag item.get_image(160,200) %>
        <% end %>
-       <div class="item"><%= item.name %></div>
-       <div class="item">¥<%= item.price.to_s(:delimited) %></div>
+       <div class="font-weight-bold item-price"><%= item.name %></div>
+       <div class="">¥<%= item.price.to_s(:delimited) %></div>
+       <div class="pb-lg-4" ></div>
       </div>
      <% end %>
     </div>
