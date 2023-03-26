@@ -4,6 +4,12 @@ class Public::ItemsController < ApplicationController
     @genres = Genre.all
     @items_all = Item.all
     @items = Item.page(params[:page]).per(8)
+    if params[:genre_id].present?
+      #presentでparams[:category_id]に値が含まれているか確認 => trueの場合下記を実行
+      @genre = Genre.find(params[:genre_id])
+      @items = @cgenre.items
+    end
+    
   end
 
   def show
