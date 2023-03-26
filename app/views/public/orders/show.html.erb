@@ -1,82 +1,83 @@
+   <div class="container add-font">
+      <h2 class="font-weight-bold col-4 ml-4">注文履歴詳細</h2>
 
-      <h2>注文履歴詳細</h2>
-       <div class="container add-font">
+         <h4 class="font-weight-bold">注文情報 </h4>
+           <div class="row justify-content-start d-flex">
+             <table class=" table table-bordered col-7 mr-4">
+               <tr>
+                 <th class="table-active col-2">注文日</th>
+                  <td><%= @order.created_at.strftime("%Y/%m/%d ") %></td>
+               </tr>
+       　　  　　  <tr>
+         　  　　　 <th class="table-active">発送先</th>
+       　　　   　    <td>
+          　　　          <p class="text-left">〒<%= @order.ship_postcode %></p>
+           　           <p class="text-left"><%= @order.ship_address %>></p>
+               　　   　 <p class="text-left"> <%= @order.ship_name %></p>
+          　     　</td>
+       　　     　  </tr>
+       　　     　  <tr>
+       　　　    　   <th class="table-active">支払方法</th>
+        　　     　　　 <td><%= @order.payment_method_i18n  %></td>
+       　　     　  </tr>
+      　　     　   <tr>
+                  <th class="table-active">ステータス</dh>
+       　　　     　   <td><%= @order.status_i18n  %></td>
+       　　     　  </tr>
+     　       </table>
 
-         <h4>注文情報 <h4>
-          <div class="d-flex">
-           <table class="col-7 table table-bordered">
-             <tr>
-               <th class="table-active">注文日</th>
-               <td><%= @order.created_at.strftime("%Y/%m/%d ") %></td>
-             </tr>
-       　　　　  <tr>
-         　　　　 <th class="table-active">発送先</th>
-       　　　　   <td>
-         　　　　   〒<%= @order.ship_postcode %><br>
-           　　　　　　 <%= @order.ship_address %><br>
-          　　　　　　  <%= @order.ship_name %>
-         　　　　 </td>
-       　　　  </tr>
-       　　　  <tr>
-       　　　　   <th class="table-active">支払方法</th>
-        　　　　　 <td><%= @order.payment_method_i18n  %></td>
-       　　　  </tr>
-      　　　   <tr>
-         　　　　 <th class="table-active">ステータス</dh>
-       　　　　   <td><%= @order.status_i18n  %></td>
-       　　　  </tr>
-     　　 </table>
+          <div class="row">
+           <h4 class="font-weight-bold">請求情報</h4>
+ 　　    　　   <table class="table table-bordered ml-3">
+             <tbody>
+              <tr>
+               <th class="table-active col-1">商品合計</th>
+               <td class="col-2"><%= (@order.charge - @order.postage).to_s(:delimited) %></td>
+              </tr>
+              <tr>
+               <th class="table-active">配送料</th>
+                <td><%= postage = 800.to_s %></td>
+              </tr>
+              <tr>
+               <th class="table-active">ご請求額</th>
+                <td><%= @order.charge.to_s(:delimited) %></td>
+              </tr>
+            </tbody>
+          </table>
+         </div>
+        </div>
 
-       <h4>請求情報</h4>
- 　　　　   <table class="col-4 mr-3 table table-bordered">
-       <tbody>
-        <tr>
-          <th class="table-active">商品合計</th>
-          <td><%= (@order.charge - @order.postage).to_s(:delimited) %></td>
-        </tr>
-        <tr>
-         <th class="table-active">配送料</th>
-         <td><%= postage = 800.to_s %></td>
-        </tr>
-        <tr>
-         <th class="table-active">ご請求額</th>
-         <td><%= @order.charge.to_s(:delimited) %></td>
-        </tr>
-      </tbody>
-     </table>
-     </div>
 
       <h4>注文内容</h4>
-     <table class="table table-borde">
-     　 <thead class="col-7 thead-light">
+       <table class="table table-bordered">
+        <thead class="col-6 thead-light">
     　　　　  <tr>
-     　　　　  <th>商品</th>
-      　　　　 <th>単価（税込）</th>
-     　　　　  <th>個数</th>
-    　　　　   <th>小計</th>
+     　　　　  <th class="col-4">商品名</th>
+      　　　　 <th class="col-1">単価（税込）</th>
+     　　　　  <th class="col-1">個数</th>
+    　　　　   <th class="col-1">小計</th>
           </tr>
         </thead>
          <tbody>
-        <tr>
+          <tr>
            <% @order_details.each do |detail| %>
-         <td>
+          <td>
            <%= detail.item.name %>
-         </td>
-         <td>
-           ¥<%= detail.tax_price.floor.to_s(:delimited) %>
-         </td>
-         <td>
+          </td>
+          <td>
+           <%= detail.tax_price.floor.to_s(:delimited) %>円
+          </td>
+          <td>
            <%= detail.item_count %>
-         </td>
-         <td>
-           ¥<%= (detail.tax_price * detail.item_count).round.to_s(:delimited) %>
-         </td>
-        </tr>
+          </td>
+          <td>
+           <%= (detail.tax_price * detail.item_count).round.to_s(:delimited) %>円
+          </td>
+         </tr>
          <% end %>
-      </tbody>
-     </table>
-
-  </div>
+        </tbody>
+       </table>
+     </div>
 
 
 

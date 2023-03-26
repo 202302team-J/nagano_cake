@@ -37,6 +37,7 @@ class Public::OrdersController < ApplicationController
    end
 
       @cart_items = current_customer.cart_items.all
+
       @total = 0
       @cart_items.each do |cart_item|
       @total = @total+cart_item.subtotal
@@ -68,7 +69,7 @@ class Public::OrdersController < ApplicationController
 
       current_customer.cart_items.destroy_all #カートの中身を削除
       redirect_to thanks_orders_path
-      else
+     else
        render "new"
      end
   end
