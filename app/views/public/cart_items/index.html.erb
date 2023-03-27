@@ -7,25 +7,25 @@
  </div>
 
  <div class="row mt-5">
-  <table class='table'>
+  <table class='table table-bordered'>
    <thead>
-    <tr>
-     <th class= "border border-dark bg-light">商品名</th>
-     <th class= "border border-dark bg-light">単価</th>
-     <th class= "border border-dark bg-light">数量</th>
-     <th class= "border border-dark bg-light">小計</th>
-     <th class= "border border-dark bg-light"></th>
+    <tr class="table-info">
+     <th class= "">商品名</th>
+     <th class= "">単価</th>
+     <th class= "">数量</th>
+     <th class= "">小計</th>
+     <th class= ""></th>
     </tr>
    </thead>
-   <tbody class= "border border-dark">
+   <tbody class= "">
     <% @cart_items.each do |item| %>
     <tr>
-     <td class= "img-container-cart border border-dark">
+     <td class= "img-container-cart">
       <%= image_tag item.item.get_image(100,75) %>
       <%= item.item.name %>
      </td>
-     <td class= "border border-dark"><%= item.item.add_tax_price.to_s(:delimited) %></td>
-     <td class= "border border-dark">
+     <td class= ""><%= item.item.add_tax_price.to_s(:delimited) %></td>
+     <td class= "">
       <%= form_with model: item, url: cart_item_path(item.id) do |f| %>
        <%= f.hidden_field :item_id, :value => item.item_id %>
        <%= f.hidden_field :customer_id, :value => current_customer.id %>
@@ -33,9 +33,9 @@
        <%= f.submit "変更", class:'btn btn-success' %>
       <% end %>
      </td>
-     <td class= "border border-dark"><%= item.subtotal.to_s(:delimited) %></td>
+     <td class= ""><%= item.subtotal.to_s(:delimited) %></td>
       <% @total += item.subtotal %>
-     <td class= "border border-dark">
+     <td class= "">
       <%= link_to "削除する", cart_item_path(item.id), method: :delete , class: "btn btn-danger"%>
      </td>
     </tr>
@@ -48,10 +48,10 @@
   <div class="d-flex col-7 my-5 align-middle">
    <%= link_to "買い物を続ける", root_path , class: "btn btn-primary mb-4" %>
   </div>
-  <div class="col-2 my-5 border border-dark bg-light align-middle">
+  <div class="col-2 my-5 d-flex align-items-center table-info">
    <p class="">合計金額</p>
   </div>
-  <div class="col-2 my-5 border border-dark align-middle">
+  <div class="col-2 my-5 border align-middle d-flex align-items-center">
    <P class="font-weight-bold align-middle"><%= @total.to_s(:delimited) %></P>
   </div>
 
