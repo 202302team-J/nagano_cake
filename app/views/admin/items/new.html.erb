@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-md-8 mx-auto my-5">
     <%= render 'error_messages', item: @item %>
-      <h3 class="my-5">商品新規登録</h3>
+      <h3 class="my-5"><mark class="bg-light">商品新規登録</mark></h3>
         <div class="ml-3">
           <div class="mb-5 px-3">
           <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
