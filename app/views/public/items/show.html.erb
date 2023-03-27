@@ -18,18 +18,19 @@
      </table>
    </div>
 
-
-
-
-    <div class="item col-10 mx-auto">
+    <div class="item col-3 mx-auto">
      <div class="image">
-      <%= image_tag @item.get_image(300,200) %>
+      <%= image_tag @item.get_image(320,210) %>
      </div>
+    </div>
+    <div class="item col-5 mx-auto">
      <div class="status mt-3">
-      <b><%= @item.name %></b>
+      <h3 class="font-weight-bold"><%= @item.name %></h3>
          <%= @item.description %><br>
-      <b>¥<%= @item.add_tax_price.to_s(:delimited) %></b><small>（税込）</small>
+      <div class="pb-lg-4" ></div>
+      <h5 class="font-weight-bold">¥<%= @item.add_tax_price.to_s(:delimited) %><small>（税込）</small></h5>
      </div>
+     <div class="pb-lg-2" ></div>
      <div class="add_cart mt-3">
       <% if customer_signed_in? %>
        <% if @item.is_active? %>
@@ -44,7 +45,8 @@
        <% end %>
       <% end %>
      </div>
-    </div>
+     </div>
+
 
   </div>
 </div>
