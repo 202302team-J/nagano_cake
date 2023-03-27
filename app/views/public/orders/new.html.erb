@@ -1,0 +1,56 @@
+
+<div class="container add-font">
+<h1>注文情報入力</h1>
+<!--支払い方法の選択-->
+    <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+
+         <p>支払い方法</p>
+           <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+           <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+           <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+           <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+
+       <!-- 会員登録時の住所を表示させる-->
+
+          <p>お届け先</p>
+               <!--自身の住所の場合＝＝０として設定する。-->
+               <%= f.radio_button :address_option, 0, checked: "checked" %>
+               <%= f.label :order_address, "ご自身の住所" %><br>
+
+             〒<%= @customer.postcode %>
+               <%= @customer.address %>
+
+               <%= @customer.family_name %>
+               <%= @customer.personal_name %>
+             </p>
+
+               <!--配送先登録した住所の場合＝＝１として設定する。-->
+                <%= f.radio_button :address_option, 1 %>
+                <%= f.label :order_address, "登録済住所から選択" %><br>
+                 <!--登録してある配送先住所をプルダウンの中から選択する-->
+                <%= f.collection_select :customer_id, @addresses, :id, :address_display, prompt: "住所を選択してください" %><br>
+
+               <!--新しいお届け先の場合＝＝２として設定する。-->
+                <%= f.radio_button :address_option, 2  %>
+                <%= f.label :order_address, "新しいお届け先" %>
+
+            <table class= 'table'>
+             <tr>
+               <td><%= f.label :ship_postcode, "郵便番号(ハイフンなし)" %></td>
+               <td><%= f.text_field :ship_postcode %></td>
+             </tr>
+             <tr>
+                <td><%= f.label :ship_address, "住所" %></td>
+                <td><%= f.text_field :ship_address, :size=>"60" %></td>
+             </tr>
+             <tr>
+               <td><%= f.label :ship_name, "宛名" %></td>
+               <td><%= f.text_field :ship_name %></td>
+             </tr>
+            </table>
+           <div class="row offset-md-5 mt-5 font-weight-bold">
+            <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+            <% end %>
+          </div>
+      </div>

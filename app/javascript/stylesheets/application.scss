@@ -1,0 +1,65 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+
+.table {
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+header {
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+.add-font{
+  font-family: 'Kosugi Maru', 'Meiryo', sans-serif;
+}
+
+.img-container img {
+  width: 200px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.img-container-top img {
+  width: 150px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.img-container-cart img {
+  width: 100px;
+  height: 75px;
+  object-fit: cover;
+}
+
+.item-price {
+background:linear-gradient(transparent 70%, #FFFF00 0%);
+}
+
+.item-index-h{
+border-bottom: double 5px #FFC778;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;/*枠線をなくす*/
+  color: #696969;/*文字の色(グレー)を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>a {
+  background: #93c9ff;/*背景の色(青)を変える*/
+  border-radius: 15px;/*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  background: #93c9ff;/*背景の色(青)を変える*/
+  border-radius: 15px;/*角を丸くする*/
+}

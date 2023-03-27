@@ -1,0 +1,50 @@
+<div class='container add-font'>
+  <div class='row'>
+    <div class="col-md-8 mx-auto my-5">
+    <%= render 'error_messages', item: @item %>
+      <h3 class="my-5"><mark class="bg-light">商品編集</mark></h3>
+        <div class="ml-3">
+          <div class="mb-5 px-3">
+          <%= form_with model: @item, url: admin_item_path, method: :patch do |f| %>
+            <div class="row form-group">
+              <h5 class="col-4">商品画像</h5>
+              <%= f.file_field :image, accept: "image/*" %>
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">商品名</h5>
+              <%= f.text_field :name, placeholder: "商品名", class: "col-7 form-control" %>
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">商品説明</h5>
+              <%= f.text_area :description, placeholder: "ここに説明文を記述します", class: "col-7 form-control" %>
+            </div>
+            <!-- genreモデルに格納しているデータをプルダウンで選択してItemモデルに保存する-->
+            <!--:保存カラム(ジャンルID),ジャンルすべて(Genre.all),保存する参照先カラム(ジャンルID),表示する参照先カラム(ジャンル名) -->
+            <div class="row form-group">
+              <h5 class="col-4">ジャンル</h5>
+              <%= f.collection_select :genre_id,Genre.all,:id,:name, include_blank: "--選択してください--", class: "col-7 form-control" %>
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">税抜価格</h5>
+              <%= f.text_field :price, placeholder: "1000", class: "col-7 form-control" %>  円
+            </div>
+            <div class="row form-group">
+              <h5 class="col-4">販売ステータス</h5>
+                <div class="col-2">
+                  <%= f.radio_button :is_active, true %>
+                  <%= f.label :is_active_true, "販売中" %>
+                </div>
+                <div class="col-3">
+                  <%= f.radio_button :is_active, false %>
+                  <%= f.label :is_active_false, "販売停止中" %>
+                </div>
+            </div>
+            <div class="text-center">
+              <%= f.submit '  変更を保存  ', class: "btn btn-outline-success" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
