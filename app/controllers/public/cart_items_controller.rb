@@ -20,7 +20,7 @@ class Public::CartItemsController < ApplicationController
      cart_item = CartItem.new(cart_item_params)
      cart_item.save
     end
-     redirect_to  cart_items_path
+     redirect_to  items_path
   end
 
 
