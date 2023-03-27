@@ -8,6 +8,7 @@
 - [作成時のルール](#作成時のルール)
 - [難しかったところ](#難しかったところ)
 - [学んだこと](#学んだこと)
+- [参考文献](#参考文献)
 
 ## 紹介
 
@@ -39,10 +40,10 @@
 | hotfix | 緊急の修正を行う | リリース後、緊急のバグへの対応する際に使用。 |
 | test | テスト用 |  |
 
-###　毎日の議事録
+### 毎日の議事録
 
 本日のタスクや、メンバーと共有したい事などを記録するためのgoogleスプレッドシートを作成し、認識のすり合わせや備忘録として活用しました。
-[`チームJ　議事録`](https://docs.google.com/spreadsheets/d/1kpx2Ifo_r11LiUdmIwMK4GqiMhcgfFX4iSNhE7Y7Cl4/edit#gid=257413993)
+[`チームJ　議事録`](https://docs.google.com/spreadsheets/d/1kpx2Ifo_r11LiUdmIwMK4GqiMhcgfFX4iSNhE7Y7Cl4/edit#gid=257413993)<br>
 知識を共有し問題とその解決策を記録することで、効率的な学習が行えました。
 
 ## 難しかったところ
